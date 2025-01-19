@@ -8,8 +8,10 @@ const morgan = require("morgan");
 require('dotenv').config()
 const mongoose = require("mongoose")
 
-const User = require('../models/user.js');
-const Tickets = require('../models/ticket.js');
+const User = require('./models/user.js');
+const Tickets = require('./models/ticket.js');
+=======
+const authController = require('./controllers/auth.js');
 
 
 
@@ -26,7 +28,7 @@ app.use(morgan("dev")); // Logs the requests in the terminal
 // =======================
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{console.log("Connected to DATABSE")})
-.catch(()=>{console.log("ERROR CONNECTING TO DB OMAR")})
+.catch(()=>{console.log("ERROR CONNECTING TO DB")})
 
 
 
@@ -35,8 +37,14 @@ mongoose.connect(process.env.MONGODB_URI)
 // 4. ROUTES
 // =======================
 
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+});
 
 
+
+
+app.use('/auth', authController);
 
 
 

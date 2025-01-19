@@ -29,6 +29,6 @@ Admin: [{
 
 });
 
-const User = mongoose.model('Ticket', ticketSchema);
+const Ticket = mongoose.model('Ticket', ticketSchema);
 
 module.exports = Ticket;
