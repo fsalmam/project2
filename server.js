@@ -10,6 +10,8 @@ const mongoose = require("mongoose")
 
 const User = require('./models/user.js');
 const Tickets = require('./models/ticket.js');
+=======
+const authController = require('./controllers/auth.js');
 
 
 
@@ -42,6 +44,7 @@ app.get('/', (req, res) => {
 
 
 
+app.use('/auth', authController);
 
 
 
