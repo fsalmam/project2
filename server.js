@@ -8,6 +8,8 @@ const morgan = require("morgan");
 require('dotenv').config()
 const mongoose = require("mongoose")
 
+const User = require('../models/user.js');
+const Tickets = require('../models/ticket.js');
 
 
 
