@@ -10,7 +10,6 @@ const mongoose = require("mongoose")
 
 const User = require('./models/user.js');
 const Tickets = require('./models/ticket.js');
-=======
 const authController = require('./controllers/auth.js');
 
 
@@ -21,7 +20,7 @@ const authController = require('./controllers/auth.js');
 app.use(express.urlencoded({ extended: false })); // parses the request body. Needed for the req.body
 app.use(methodOverride("_method")); // Will change the methods for
 app.use(morgan("dev")); // Logs the requests in the terminal
-
+app.use('/images', express.static('./images'))
 
 // =======================
 // 3. CONNECTION TO DATABASE
