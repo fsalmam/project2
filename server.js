@@ -27,6 +27,9 @@ app.use(express.urlencoded({ extended: false })); // parses the request body. Ne
 app.use(methodOverride("_method")); // Will change the methods for
 app.use(morgan("dev")); // Logs the requests in the terminal
 
+app.use('/images', express.static('./images'))
+
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
