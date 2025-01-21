@@ -11,4 +11,10 @@ router.get('/', (req, res) => {
   res.render('create.ejs');
 });
 
+router.post("/",async(req,res)=>{
+    const createdTicket = await Ticket.create(req.body)
+ 
+})
+
+
 module.exports = router;
