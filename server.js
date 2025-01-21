@@ -12,6 +12,9 @@ const User = require('./models/user.js');
 const Tickets = require('./models/ticket.js');
 const authController = require('./controllers/auth.js');
 
+const session = require('express-session');
+
+
 const passUserToView = require('./middleware/pass-to-user.js');
 const isSignedIn = require("./middleware/is-signed-in.js")
 
