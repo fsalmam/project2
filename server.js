@@ -13,6 +13,7 @@ const Tickets = require('./models/ticket.js');
 const authController = require('./controllers/auth.js');
 
 const session = require('express-session');
+const ticketController = require('./controllers/ticket.js');
 
 
 const passUserToView = require('./middleware/pass-to-user.js');
@@ -42,6 +43,9 @@ app.use(
 );
 
 app.use(passUserToView)
+
+app.use("/ticket",ticketController)
+
 
 
 
