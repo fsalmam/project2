@@ -14,7 +14,7 @@ router.get('/create', (req, res) => {
 });
 
 router.post("/create", async(req,res)=>{
-    req.body.customer = req.session.user._id
+    req.body.Customer = req.session.user._id
     console.log(req.body)
     const createdTicket = await Ticket.create(req.body)
     res.redirect("/")
