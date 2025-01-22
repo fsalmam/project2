@@ -44,7 +44,7 @@ app.use(
 
 app.use(passUserToView)
 
-app.use("/ticket",ticketController)
+
 
 
 
@@ -71,6 +71,9 @@ app.get('/', (req, res) => {
 
 
 app.use('/auth', authController);
+
+app.use(isSignedIn)
+app.use("/ticket",ticketController)
 
 
 

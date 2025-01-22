@@ -9,15 +9,18 @@ router.get('/show/:ticketId', (req, res) => {
   res.render('show.ejs');
 });
 
-router.get('/', (req, res) => {
+router.get('/create', (req, res) => {
   res.render('create.ejs');
 });
 
-router.post("/",async(req,res)=>{
+router.post("/create", async(req,res)=>{
+    req.body.customer = req.session.user._id
+    console.log(req.body)
     const createdTicket = await Ticket.create(req.body)
     res.redirect("/")
- 
-})
+});
+
+
 
 
 module.exports = router;
