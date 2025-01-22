@@ -18,6 +18,8 @@ router.post("/create", async(req,res)=>{
     console.log(req.body)
     const createdTicket = await Ticket.create(req.body)
     res.redirect("/")
+    const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
+    
 });
 
 

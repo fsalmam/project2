@@ -17,7 +17,7 @@ const ticketSchema = mongoose.Schema({
   Customer: {
     type: mongoose.Schema.Types.ObjectId,
      ref:"User",
-    //  required: true
+     required: true
 },
 
 Admin: [{
