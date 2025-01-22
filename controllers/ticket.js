@@ -19,16 +19,21 @@ router.get('/:ticketId', async(req, res) => {
   res.render('ticketDtl.ejs', {ticket:foundTicket});
 });
 
-// Create Code
-router.get('/', (req, res) => {
+
+router.get('/create', (req, res) => {
   res.render('create.ejs');
 });
 
-router.post("/",async(req,res)=>{
+router.post("/create", async(req,res)=>{
+    req.body.Customer = req.session.user._id
+    console.log(req.body)
     const createdTicket = await Ticket.create(req.body)
     res.redirect("/")
- 
-})
+    const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
+    
+});
+
+
 
 
 module.exports = router;
