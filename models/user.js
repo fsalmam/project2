@@ -22,11 +22,11 @@ const userSchema = mongoose.Schema({
   isAdmin: {
     type: Boolean
 },
-ticket: {
+ticket: [{
 
     type: mongoose.Schema.Types.ObjectId,
      ref:"tickets"
-},
+}],
 
 });
 
