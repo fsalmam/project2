@@ -11,6 +11,10 @@
     <h3></h3>
         <p>Type: <%= ticket.type%></p>
         <p>Subject: <%=ticket.Subject%></p>
+
+        <form action="/ticket/<%= ticket._id%>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+        </form>
         
 </body>
 </html>
