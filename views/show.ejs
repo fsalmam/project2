@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Tickets</title>
+  <!-- <link rel="stylesheet" href="/styles.css"> Optional: Include a stylesheet if needed -->
+  <style>
+    table {
+      width: 50%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>User Tickets</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>User Information</h2>
+      <p><strong>Username:</strong> <%= user.username %></p>
+    </section>
+
+    <section>
+      <h2>Tickets</h2>
+      <% if (user.ticket && user.ticket.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Seq</th>
+<!--               <th>Type</th>
+ -->              <th>Subject</th>
+   
+            </tr>
+          </thead>
+          <tbody>
+            <% user.ticket.forEach((ticket, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+<!--                 <td><%= ticket.type %></td>-->            
+                 <td><a href="/ticket/<%= ticket._id %>"> <%= ticket.Subject %></a></td>
+
+              </tr>
+            <% }) %>
+          </tbody></a>
+        </table>
+      <% } else { %>
+        <p>No tickets found for this user.</p>
+      <% } %>
+    </section>
+  
+  </main>
+</body>
+</html>
