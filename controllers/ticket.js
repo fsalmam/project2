@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Ticket = require('../models/ticket.js');
+
 const User = require('../models/user.js');
 
 //List the Tickets
@@ -25,12 +26,14 @@ router.get('/create', (req, res) => {
 });
 
 router.post("/create", async(req,res)=>{
+
     req.body.Customer = req.session.user._id
     console.log(req.body)
     const createdTicket = await Ticket.create(req.body)
     res.redirect("/")
     const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
     
+
 });
 
 
