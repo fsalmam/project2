@@ -35,9 +35,6 @@ router.get('/:ticketId', async(req, res) => {
 
 
 
-
-
-
 // Delete the Ticket
 router.delete("/:ticketId", async(req,res)=>{
   try{
