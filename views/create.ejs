@@ -83,30 +83,62 @@
     <h1>New Ticket:</h1>
     
     <form action="/ticket/create" method="POST">
-        <label for="type">type:</label>
-        <input type="text" name="type" id="type" />
-
-  <div class="background-animation">
-    <!-- Floating money images (unchanged) -->
-  </div>
-
-  <div class="main-container">
-    <h1>Create a New Ticket</h1>
-    <form action="/ticket/create" method="POST">
-      <div>
-        <label for="type">Ticket Type:</label>
-        <input type="text" name="type" id="type" required maxlength="50" placeholder="Enter type of issue" />
-      </div>
-
-      <div>
-        <label for="Subject">Subject:</label>
-        <input type="text" name="Subject" id="Subject" required maxlength="100" placeholder="Enter the subject" />
-      </div>
-
-      <button type="submit">Create Ticket</button>
-    </form>
-    <!-- test -->
-  </div>
-
+        <!--         <label for="type">type:</label>
+                <input type="text" name="type" id="type" /> -->
+                <label for="type">Type:</label>
+                <select id="select" name="type" id="type" required>
+                    <option value="" disabled selected>Select Type</option>
+                    <option value="Account Access Help">Account Access Help</option>
+                    <option value="Card Services">Card Services</option>
+                    <option value="Other">Other</option>
+                </select>
+        
+        <!--         <label for="Subject">Subject:</label>
+                <input type="text" name="Subject" id="Subject" /> -->
+        
+                        <label for="Subject">Subject:</label>
+                <select name="Subject" id="Subject" required>
+        
+                        <option class="options" style="display: none;" value="" disabled selected>Select Subject</option>
+                        <option class="options" style="display: none;"  value="Forgot Password">Forgot Password</option>
+                        <option class="options" style="display: none;" value="Unlock My Account">Unlock My Account</option>
+                        <option class="options" style="display: none;" value="Authentication Issues">Authentication Issues</option> 
+                        <option class="optionsCard" style="display: none;" value="Report Lost or Stolen Card">Report Lost or Stolen Card</option>
+                        <option class="optionsCard" style="display: none;" value="Card Activation/Deactivation">Card Activation/Deactivation</option>
+                        <option class="optionsCard" style="display: none;" value="Disputed or Fraudulent Transactions">Disputed or Fraudulent Transactions</option>
+                        <option class="optionsOther" style="display: none;" value="Other">Other</option>
+        
+                </select>
+        
+                <label for="message">Message:</label>
+                <textarea name="message" id="message"></textarea>
+        
+                <button type="submit">Create</button>
+              
+            </form>
+        
+            <script>
+                const choice = document.querySelector("#select")
+                const options = document.querySelectorAll(".options")
+                const optionsCard = document.querySelectorAll(".optionsCard")
+                const optionsOther = document.querySelectorAll(".optionsOther")
+        
+        
+                
+        
+                choice.addEventListener("change", (e) => {
+                    options.forEach(option => option.style.display = "none");
+                    optionsCard.forEach(option => option.style.display = "none");
+        
+                    if (e.target.value === "Account Access Help") {
+                        options.forEach(option => option.style.display = "block");
+                    } else if (e.target.value === "Card Services") {
+                        optionsCard.forEach(option => option.style.display = "block");
+                    } else if (e.target.value === "Other") {
+                        optionsOther.forEach(option => option.style.display = "block");
+        
+                    }
+                });
+            </script>
 </body>
 </html>
