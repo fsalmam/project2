@@ -23,7 +23,13 @@ const userSchema = mongoose.Schema({
     type: Boolean
 },
 
-ticket: [{
+ticket: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Ticket",
+  }
+],
+
 
     type: mongoose.Schema.Types.ObjectId,
      ref:"Ticket"

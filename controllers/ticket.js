@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Ticket = require('../models/ticket.js');
 const User = require('../models/user.js');
-
-
-
-
 router.get('/create', (req, res) => {
   res.render('create.ejs');
 });
@@ -17,6 +13,7 @@ router.post("/create", async(req,res)=>{
     
     const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
     res.redirect("/")
+
 });
 
 //List the Tickets
@@ -36,45 +33,33 @@ router.get('/:ticketId', async(req, res) => {
   res.render('ticketDtl.ejs', {ticket:foundTicket});
 });
 
-// router.get('/:ticketId/update', async (req, res) => {
-//   try {
-//     const currentUser = await User.findById(req.session.user._id);
-//     const ticket = currentUser.tickets.id(req.params.ticketId);
-//     res.render('tickets/update.ejs', { ticket: ticket });
-//   } catch (error) {
-//     console.log(error);
-//     res.redirect('/');
-//   }
-// });
-
-// router.put('/:ticketId', async (req, res) => {
-//   try {
-//     const currentUser = await User.findById(req.session.user._id);
-//     const ticket = currentUser.tickets.id(req.params.ticketId);
-
-//     ticket.subject = req.body.subject;
-//     ticket.type = req.body.type;
-
-//     await currentUser.save();
-
-//     res.redirect(`/users/${currentUser._id}/tickets/${ticket._id}`);
-//   } catch (error) {
-//     console.log(error);
-//     res.redirect('/'); 
-//   }
-// });
 
 
 
+
+
+// Delete the Ticket
 router.delete("/:ticketId", async(req,res)=>{
   try{
     await Ticket.findByIdAndDelete(req.params.ticketId)
-    res.redirect("/ticket")
+    res.redirect("/")
   }
   catch(err){
     console.log(err)
   }
 })
+
+router.post("/create", async(req,res)=>{
+
+    req.body.Customer = req.session.user._id
+    console.log(req.body)
+    const createdTicket = await Ticket.create(req.body)
+    res.redirect("/")
+    const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
+    
+
+});
+
 
 
 
