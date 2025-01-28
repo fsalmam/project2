@@ -68,7 +68,7 @@
       animation: float-from-top-left 10s linear infinite;
     }
 
-    @keyframes float-from-top-left {
+    /* @keyframes float-from-top-left {
       0% {
         transform: translate(-10vw, -10vh) rotate(0deg);
         opacity: 0;
@@ -115,18 +115,19 @@
       left: 30%;
       animation-duration: 13s;
       animation-delay: 4s;
-    }
+    } */
+
   </style>
 </head>
 <body>
-
+<!-- 
   <div class="background-animation">
     <img src="../../images/dinnar.jpg" class="money-1" alt="Money">
     <img src="../../images/tw.png" class="money-2" alt="Money">
     <img src="../../images/ru.jpg" class="money-3" alt="Money">
     <img src="../../images/ten.jpg" class="money-4" alt="Money">
     <img src="../../images/five.jpeg" class="money-5" alt="Money">
-  </div>
+  </div> -->
 
   <div class="main-container">
     <h1>Welcome to the GA Bank,</h1>
@@ -134,10 +135,11 @@
  <% if (user) { %>
       <h2>Welcome, <%= user.username %>!</h2>
       <p>
-        <a href="/auth/sign-out">Sign out</a> | 
+        <a href="/auth/sign-out">Sign out</a> 
         <a href="/ticket/show/<%= user._id %>">View Tickets</a>
       </p>
-    <% } else { %>
+    <% }
+     else { %>
       <h2>Welcome to the app, guest.</h2>
       <p>
         <a href="/auth/sign-up">Sign up</a> or
@@ -145,6 +147,6 @@
       </p>
     <% } %>
   </div>
-<!-- test -->
+
 </body>
 </html>

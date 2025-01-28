@@ -4,170 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Tickets</title>
+
+  <link rel="stylesheet" href="/styles.css"> <!-- Optional: Include a stylesheet if needed -->
   <style>
-    body {
-      font-family: bradley hand, cursive;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #fdfdfd, #b2cfea);
-      overflow: hidden;
-    }
-
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      width: 80%;
-      max-width: 1100px;
-      background: #fbfafa;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 20px;
-      overflow: hidden;
-      padding: 30px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #2c3e50;
-    }
-
-    .section {
-      margin: 20px 0;
-    }
-
-    .section h2 {
-      font-size: 1.5rem;
-      color: #34495e;
-    }
-
-    .section p {
-      font-size: 1rem;
-      color: #34495e;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f4f4f4;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    table a {
-      color: #2980b9;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    table a:hover {
-      text-decoration: underline;
-    }
-
-    .background-animation {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .background-animation img {
-      position: absolute;
-      width: 100px;
-      animation: float-from-top-left 10s linear infinite;
-    }
-
-    @keyframes float-from-top-left {
-      0% {
-        transform: translate(-10vw, -10vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translate(100vw, 100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .money-1 {
-      top: 5%;
-      left: 5%;
-      animation-duration: 12s;
-      animation-delay: 0s;
-    }
-
-    .money-2 {
-      top: 10%;
-      left: 10%;
-      animation-duration: 15s;
-      animation-delay: 3s;
-    }
-
-    .money-3 {
-      top: 20%;
-      left: 15%;
-      animation-duration: 9s;
-      animation-delay: 1s;
-    }
-
-    .money-4 {
-      top: 30%;
-      left: 25%;
-      animation-duration: 11s;
-      animation-delay: 2s;
-    }
-
-    .money-5 {
-      top: 40%;
-      left: 30%;
-      animation-duration: 13s;
-      animation-delay: 4s;
-    }
   </style>
 </head>
 <body>
-  <div class="background-animation">
-    <img src="../../images/dinnar.jpg" class="money-1" alt="Money">
-    <img src="../../images/tw.png" class="money-2" alt="Money">
-    <img src="../../images/ru.jpg" class="money-3" alt="Money">
-    <img src="../../images/ten.jpg" class="money-4" alt="Money">
-    <img src="../../images/five.jpeg" class="money-5" alt="Money">
-  </div>
-  
-  <div class="main-container">
-    <header>
-      <h1>User Tickets</h1>
-    </header>
 
-    <section class="section">
       <h2>User Information</h2>
       <p><strong>Username:</strong> <%= user.username %></p>
     </section>
 
     <section class="section">
+    <section>
+
       <h2>Tickets</h2>
       <% if (user.ticket && user.ticket.length > 0) { %>
         <table>
@@ -175,6 +25,7 @@
             <tr>
               <th>Seq</th>
               <th>Subject</th>
+
             </tr>
           </thead>
           <tbody>
@@ -185,12 +36,13 @@
               </tr>
             <% }) %>
           </tbody>
+
         </table>
       <% } else { %>
         <p>No tickets found for this user.</p>
       <% } %>
     </section>
   </div>
-  <!-- test -->
+
 </body>
 </html>
