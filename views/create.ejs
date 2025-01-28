@@ -129,7 +129,8 @@
                 choice.addEventListener("change", (e) => {
                     options.forEach(option => option.style.display = "none");
                     optionsCard.forEach(option => option.style.display = "none");
-        
+                    optionsOther.forEach(option => option.style.display = "none");
+
                     if (e.target.value === "Account Access Help") {
                         options.forEach(option => option.style.display = "block");
                     } else if (e.target.value === "Card Services") {
