@@ -177,6 +177,7 @@
             <h1>Ticket Details</h1>
             <p>Type: <%= ticket.type %></p>
             <p>Subject: <%= ticket.Subject %></p>
+            <p>message: <%= ticket.message %></p>
 
             <form action="/ticket/<%= ticket._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Ticket</button>
@@ -195,6 +196,7 @@
             </div>
         </div>
     </div>
+    <!-- test -->
 </body>
 </html>
 
