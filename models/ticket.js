@@ -18,6 +18,7 @@ const ticketSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
 
+ 
      required: true
 
 },
@@ -34,4 +35,3 @@ Admin: [{
 
  const Ticket = mongoose.model('Ticket', ticketSchema);
 module.exports = Ticket;
-//test
