@@ -9,18 +9,15 @@ const ticketSchema = mongoose.Schema({
   Subject: {
     type: String,
     enum: ['Forgot Password', 'Unlock My Account', 'Authentication Issues', 'Report Lost or Stolen Card',
-        'Card Activation/Deactivation','Disputed or Fraudulent Transactions'],
+        'Card Activation/Deactivation','Disputed or Fraudulent Transactions','Other'],
 
     required: true,
   },
 
   Customer: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-
- 
+     ref:"User",
      required: true
-
 },
 
 Admin: [{
@@ -28,10 +25,14 @@ Admin: [{
      ref:"User"
 }],
 
+message: {
+  type: String
+},
 
 
 
 });
 
- const Ticket = mongoose.model('Ticket', ticketSchema);
+const Ticket = mongoose.model('Ticket', ticketSchema);
+
 module.exports = Ticket;
