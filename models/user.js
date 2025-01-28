@@ -15,17 +15,13 @@ const userSchema = mongoose.Schema({
     type: Boolean
 },
 
-ticket: [
-  {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Ticket",
-  }
-],
+ticket: [{
 
+    type: mongoose.Schema.Types.ObjectId,
+     ref:"Ticket"
+}],
 });
 
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-
-//test
