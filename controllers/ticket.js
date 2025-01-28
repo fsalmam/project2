@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Ticket = require('../models/ticket.js');
 const User = require('../models/user.js');
+const Message = require('../models/message.js');
+
 router.get('/create', (req, res) => {
   res.render('create.ejs');
 });
@@ -9,7 +11,25 @@ router.get('/create', (req, res) => {
 router.post("/create", async(req,res)=>{
     req.body.Customer = req.session.user._id
     console.log(req.body)
-    const createdTicket = await Ticket.create(req.body)
+    console.log(req.body.message)
+    console.log(req.body.Customer)
+
+    const createdMessageDetail = req.body
+
+    const createdMessage = await Message.create({
+      messages: req.body.message,
+      user: req.body.Customer
+    })
+
+    console.log(createdMessage)
+
+    // delete createdMessageDetail.message
+    createdMessageDetail.message = createdMessage.id
+    console.log(createdMessageDetail)
+
+    const createdTicket = await Ticket.create(createdMessageDetail)
+
+
     
     const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
     res.redirect("/")
