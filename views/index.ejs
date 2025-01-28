@@ -4,25 +4,148 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
+  <style>
+    body {
+      font-family: 'Bradley Hand', cursive;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fdfdfd, #b2cfea);
+      overflow: hidden;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      max-width: 1100px;
+      background: #fbfafa;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #34495e;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px 20px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .background-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .background-animation img {
+      position: absolute;
+      width: 100px;
+      animation: float-from-top-left 10s linear infinite;
+    }
+
+    @keyframes float-from-top-left {
+      0% {
+        transform: translate(-10vw, -10vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(100vw, 100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .money-1 {
+      top: 5%;
+      left: 5%;
+      animation-duration: 12s;
+      animation-delay: 0s;
+    }
+
+    .money-2 {
+      top: 10%;
+      left: 10%;
+      animation-duration: 15s;
+      animation-delay: 3s;
+    }
+
+    .money-3 {
+      top: 20%;
+      left: 15%;
+      animation-duration: 9s;
+      animation-delay: 1s;
+    }
+
+    .money-4 {
+      top: 30%;
+      left: 25%;
+      animation-duration: 11s;
+      animation-delay: 2s;
+    }
+
+    .money-5 {
+      top: 40%;
+      left: 30%;
+      animation-duration: 13s;
+      animation-delay: 4s;
+    }
+  </style>
 </head>
 <body>
 
- 
-    <h1>Welcome to the BankApp,</h1>
-    <% if (user) { %>
-        <h1>Welcome to the app, <%= user.username %>!</h1>
-        <p>
-          <a href="/auth/sign-out">Sign out</a>
-          <a href="/ticket/show/<%= user._id %>">Tickets</a>
+  <div class="background-animation">
+    <img src="../../images/dinnar.jpg" class="money-1" alt="Money">
+    <img src="../../images/tw.png" class="money-2" alt="Money">
+    <img src="../../images/ru.jpg" class="money-3" alt="Money">
+    <img src="../../images/ten.jpg" class="money-4" alt="Money">
+    <img src="../../images/five.jpeg" class="money-5" alt="Money">
+  </div>
 
-        </p>
+  <div class="main-container">
+    <h1>Welcome to the GA Bank,</h1>
 
-      <% } else { %>
-        <h1>Welcome to the app, guest.</h1>
-        <p>
-          <a href="/auth/sign-up">Sign up</a> or
-          <a href="/auth/sign-in">Sign in</a>.
-        </p>
-      <% } %>
+ <% if (user) { %>
+      <h2>Welcome, <%= user.username %>!</h2>
+      <p>
+        <a href="/auth/sign-out">Sign out</a> | 
+        <a href="/ticket/show/<%= user._id %>">View Tickets</a>
+      </p>
+    <% } else { %>
+      <h2>Welcome to the app, guest.</h2>
+      <p>
+        <a href="/auth/sign-up">Sign up</a> or
+        <a href="/auth/sign-in">Sign in</a>.
+      </p>
+    <% } %>
+  </div>
+
+
 </body>
 </html>

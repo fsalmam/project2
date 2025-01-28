@@ -4,20 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create a Ticket</title>
+    <style>
+      body {
+        font-family: bradley hand, cursive;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #fdfdfd, #b2cfea);
+        overflow: hidden;
+      }
+
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        max-width: 1100px;
+        background: #fbfafa;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        padding: 30px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-size: 1rem;
+        color: #34495e;
+        margin-bottom: 8px;
+        display: block;
+        text-align: left;
+      }
+
+      input {
+        padding: 10px;
+        border: 1px solid #de7474;
+        border-radius: 25px;
+        font-size: 1rem;
+        width: 100%; /* Set width to 100% to ensure input fills the container */
+        max-width: 400px; /* Max width for better presentation */
+        margin-bottom: 15px;
+        font-family: 'Arial', sans-serif; /* Temporarily use a safe font */
+      }
+
+      input:focus {
+        border-color: #2980b9;
+        outline: none;
+      }
+
+      button {
+        width: 30%;
+        padding: 12px;
+        background-color: #bb3f3f;
+        color: white;
+        font-size: 1rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #1e6f9f;
+      }
+
+    </style>
 </head>
 <body>
+
     <h1>New Ticket:</h1>
     
     <form action="/ticket/create" method="POST">
         <label for="type">type:</label>
         <input type="text" name="type" id="type" />
 
+  <div class="background-animation">
+    <!-- Floating money images (unchanged) -->
+  </div>
+
+  <div class="main-container">
+    <h1>Create a New Ticket</h1>
+    <form action="/ticket/create" method="POST">
+      <div>
+        <label for="type">Ticket Type:</label>
+        <input type="text" name="type" id="type" required maxlength="50" placeholder="Enter type of issue" />
+      </div>
+
+      <div>
         <label for="Subject">Subject:</label>
-        <input type="text" name="Subject" id="Subject" />
-        
-        <button type="submit">Create</button>
-      
+        <input type="text" name="Subject" id="Subject" required maxlength="100" placeholder="Enter the subject" />
+      </div>
+
+      <button type="submit">Create Ticket</button>
     </form>
-    
+  </div>
+
 </body>
 </html>

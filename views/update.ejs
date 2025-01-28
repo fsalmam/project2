@@ -1,23 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Update Ticket</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Ticket</title>
+  <style>
+    body {
+      font-family: bradley hand, cursive;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fdfdfd, #b2cfea);
+      overflow: hidden;
+    }
+
+    .main-container {
+      display: flex;
+      width: 80%;
+      max-width: 1100px;
+      background: #fbfafa;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-section {
+      width: 50%;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-section h1 {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .form-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-section label {
+      font-size: 0.9rem;
+      color: #34495e;
+    }
+
+    .form-section input {
+      padding: 10px;
+      border: 1px solid #de7474;
+      border-radius: 25px;
+      font-size: 1rem;
+      width: 40%;
+      font-family: bradley hand, cursive;
+    }
+
+    .form-section input:focus {
+      border-color: #2980b9;
+      outline: none;
+    }
+
+    .form-section button {
+      width: 20%;
+      padding: 12px;
+      background-color: #bb3f3f;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-section button:hover {
+      background-color: #1e6f9f;
+    }
+
+    .info-section {
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(234, 209, 209, 0.296);
+      z-index: 1;
+    }
+
+    .info-section .info-content {
+      position: relative;
+      color: #9c1e1e;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .info-section .info-content h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .info-section .info-content p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .background-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .background-animation img {
+      position: absolute;
+      width: 100px;
+      animation: float-from-top-left 10s linear infinite;
+    }
+
+    @keyframes float-from-top-left {
+      0% {
+        transform: translate(-10vw, -10vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(100vw, 100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .money-1 {
+      top: 5%;
+      left: 5%;
+      animation-duration: 12s;
+      animation-delay: 0s;
+    }
+    .money-2 {
+      top: 10%;
+      left: 10%;
+      animation-duration: 15s;
+      animation-delay: 3s;
+    }
+    .money-3 {
+      top: 20%;
+      left: 15%;
+      animation-duration: 9s;
+      animation-delay: 1s;
+    }
+    .money-4 {
+      top: 30%;
+      left: 25%;
+      animation-duration: 11s;
+      animation-delay: 2s;
+    }
+    .money-5 {
+      top: 40%;
+      left: 30%;
+      animation-duration: 13s;
+      animation-delay: 4s;
+    }
+  </style>
 </head>
 <body>
-<h1>Update Ticket</h1>
-<form action="/ticket/update" method="GET">
-<label for="id">Ticket ID:</label>
-<input type="text" id="id" name="id" value="<%= ticket.id %>" readonly required><br><br>
-<label for="subject">Subject:</label>
-<input type="text" id="subject" name="subject" value="<%= ticket.subject %>" required><br><br>
-<label for="customer">Customer:</label>
-<input type="text" id="customer" name="customer" value="<%= ticket.customer %>" required><br><br>
-<label for="description">Description:</label>
-<textarea id="description" name="description" required><%= ticket.description %></textarea><br><br>
-<button type="submit">Update Ticket</button>
-</form>
-<a href="/tickets">Back to Tickets</a>
+  <div class="background-animation">
+    <img src="../../images/dinnar.jpg" class="money-1" alt="Money">
+    <img src="../../images/tw.png" class="money-2" alt="Money">
+    <img src="../../images/ru.jpg" class="money-3" alt="Money">
+    <img src="../../images/ten.jpg" class="money-4" alt="Money">
+    <img src="../../images/five.jpeg" class="money-5" alt="Money">
+  </div>
+
+  <div class="main-container">
+    <div class="form-section">
+      <h1>Update Ticket</h1>
+      <form action="/ticket/<%= ticket._id %>/update?_method=PUT" method="POST">
+        <div>
+          <label for="type">Type:</label>
+          <input 
+            type="text" 
+            name="type" 
+            id="type" 
+            value="<%= ticket.type %>" 
+            required 
+            maxlength="50"
+          />
+        </div>
+
+        <div>
+          <label for="subject">Subject:</label>
+          <input 
+            type="text" 
+            id="Subject" 
+            name="Subject" 
+            value="<%= ticket.Subject %>" 
+            required 
+            maxlength="100"
+          />
+        </div>
+
+        <div>
+          <button type="submit">CONFIRM</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="info-section">
+      <div class="info-content">
+        <img src="../../images/cs.png" style="width: 400px; height: auto";>
+        <h2>Update Your Ticket</h2>
+        <p>Modify your ticket details and keep the support process moving smoothly.</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+

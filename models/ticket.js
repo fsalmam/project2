@@ -16,7 +16,9 @@ const ticketSchema = mongoose.Schema({
 
   Customer: {
     type: mongoose.Schema.Types.ObjectId,
-     ref:"User",
+    ref: "User",
+
+
  
      required: true
 
@@ -32,6 +34,5 @@ Admin: [{
 
 });
 
-const Ticket = mongoose.model('Ticket', ticketSchema);
-
+ const Ticket = mongoose.model('Ticket', ticketSchema);
 module.exports = Ticket;

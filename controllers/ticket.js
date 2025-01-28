@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Ticket = require('../models/ticket.js');
-
 const User = require('../models/user.js');
-
 router.get('/create', (req, res) => {
   res.render('create.ejs');
 });
@@ -12,9 +10,10 @@ router.post("/create", async(req,res)=>{
     req.body.Customer = req.session.user._id
     console.log(req.body)
     const createdTicket = await Ticket.create(req.body)
-    res.redirect("/")
-    const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
     
+    const updateCustomer = await User.findByIdAndUpdate(req.body.Customer,{$push:{ticket:createdTicket._id}})
+    res.redirect("/")
+
 });
 
 //List the Tickets
@@ -26,12 +25,18 @@ router.get('/show/:userId', async(req, res) => {
   res.render('show.ejs', {user:foundUser});
 });
 
+
 //Show the ticket details
 router.get('/:ticketId', async(req, res) => {
   const foundTicket = await Ticket.findById(req.params.ticketId)
   console.log(foundTicket)
   res.render('ticketDtl.ejs', {ticket:foundTicket});
 });
+
+
+
+
+
 
 // Delete the Ticket
 router.delete("/:ticketId", async(req,res)=>{
@@ -56,5 +61,44 @@ router.post("/create", async(req,res)=>{
 });
 
 
+
+
+
+
+
+
+
+// Route to render the update form
+router.get('/:ticketId/update', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const ticket=await Ticket.findById(req.params.ticketId)
+   
+    if (!ticket) {
+      return res.redirect('/'); 
+    }
+    res.render('update.ejs', { ticket: ticket });
+  } catch (error) {
+    console.error(error);
+    res.redirect('/');
+  }
+});
+
+// Route to handle updating the ticket
+router.put('/:ticketId/update', async (req, res) => {
+    const currentUser = await User.findById(req.session.user._id);
+    console.log(req.body)
+    const ticket = await Ticket.findByIdAndUpdate(req.params.ticketId,req.body);
+    // if (!ticket) {
+    //   return res.redirect('/'); 
+    // }
+
+ currentUser.set(req.body)
+
+    // await ticket.save();
+
+    res.redirect(`/ticket/${ticket._id}`);
+  
+});
 
 module.exports = router;
