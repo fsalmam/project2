@@ -6,7 +6,6 @@ const User = require('../models/user.js');
 
 
 
-
 router.get('/create', (req, res) => {
   res.render('create.ejs');
 });
@@ -20,7 +19,6 @@ router.post("/create", async(req,res)=>{
     res.redirect("/")
 });
 
-
 //List the Tickets
 router.get('/show/:userId', async(req, res) => {
   const foundUser = await User.findById(req.params.userId).populate("ticket")
@@ -31,14 +29,12 @@ router.get('/show/:userId', async(req, res) => {
 });
 
 
-
 //Show the ticket details
 router.get('/:ticketId', async(req, res) => {
   const foundTicket = await Ticket.findById(req.params.ticketId)
   console.log(foundTicket)
   res.render('ticketDtl.ejs', {ticket:foundTicket});
 });
-
 
 // router.get('/:ticketId/update', async (req, res) => {
 //   try {
@@ -70,7 +66,6 @@ router.get('/:ticketId', async(req, res) => {
 
 
 
-
 router.delete("/:ticketId", async(req,res)=>{
   try{
     await Ticket.findByIdAndDelete(req.params.ticketId)
@@ -88,18 +83,14 @@ router.delete("/:ticketId", async(req,res)=>{
 
 
 
-
 // Route to render the update form
 router.get('/:ticketId/update', async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
     const ticket=await Ticket.findById(req.params.ticketId)
-    // if (!currentUser) {
-    // return res.redirect('/login'); // Redirect if user is not authenticated
-    //  }
-    // const ticket = currentUser.tickets.id(req.params.ticketId);
+   
     if (!ticket) {
-      return res.redirect('/'); // Redirect if the ticket is not found
+      return res.redirect('/'); 
     }
     res.render('update.ejs', { ticket: ticket });
   } catch (error) {
@@ -109,21 +100,17 @@ router.get('/:ticketId/update', async (req, res) => {
 });
 
 // Route to handle updating the ticket
-router.put('/:ticketId', async (req, res) => {
+router.put('/:ticketId/update', async (req, res) => {
     const currentUser = await User.findById(req.session.user._id);
-    // if (!currentUser) {
-    //   return res.redirect('/login'); // Redirect if user is not authenticated
+    console.log(req.body)
+    const ticket = await Ticket.findByIdAndUpdate(req.params.ticketId,req.body);
+    // if (!ticket) {
+    //   return res.redirect('/'); 
     // }
-    const ticket = await Ticket.findById(req.params.ticketId);
-    if (!ticket) {
-      return res.redirect('/'); // Redirect if the ticket is not found
-    }
 
-    // // Update ticket details
-    // ticket.subject = req.body.subject;
-    // ticket.type = req.body.type;
+ currentUser.set(req.body)
 
-    await currentUser.save();
+    // await ticket.save();
 
     res.redirect(`/ticket/${ticket._id}`);
   

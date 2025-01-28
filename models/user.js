@@ -22,6 +22,7 @@ const userSchema = mongoose.Schema({
   isAdmin: {
     type: Boolean
 },
+
 ticket: [{
 
     type: mongoose.Schema.Types.ObjectId,
