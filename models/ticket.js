@@ -30,7 +30,10 @@ Admin: [{
 }],
 
 
-
+message: [{
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "Message"
+}]
 
 });
 

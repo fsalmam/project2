@@ -10,6 +10,7 @@ const mongoose = require("mongoose")
 
 const User = require('./models/user.js');
 const Tickets = require('./models/ticket.js');
+const Message = require('./models/message.js');
 const authController = require('./controllers/auth.js');
 
 const session = require('express-session');

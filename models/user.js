@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
@@ -10,26 +9,12 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  // confirmPassword: {
-  //   type: String,
-  //   required: true,
-  // },
-  // email: {
-   
-  //       type: String,
-  //       required: true,
-  // },
+
   isAdmin: {
     type: Boolean
 },
 
-ticket: [
-  {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Ticket",
-  }
-],
-
+ticket: [{
 
     type: mongoose.Schema.Types.ObjectId,
      ref:"Ticket"
