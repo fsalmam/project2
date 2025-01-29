@@ -48,9 +48,24 @@ router.get('/show/:userId', async(req, res) => {
 
 //Show the ticket details
 router.get('/:ticketId', async(req, res) => {
-  const foundTicket = await Ticket.findById(req.params.ticketId)
-  console.log(foundTicket)
-  res.render('ticketDtl.ejs', {ticket:foundTicket});
+  const foundTicket = await Ticket.findById(req.params.ticketId).populate('message')
+  console.log(typeof(foundTicket))
+  // const msgcreator = await User.findById(foundTicket.message[0].user)
+  const msgA = await Promise.all(foundTicket.message.map( async(e)=>{
+    const msgcreator = await User.findById(e.user)
+    return  `comment: "${ e.messages}" by ${ msgcreator.username}`
+  })
+)
+
+console.log(msgA)
+//   const msg = `comment: "${foundTicket.message[0].messages}" by ${msgcreator.username}`
+  console.log(msgA)
+
+  res.render('ticketDtl.ejs', {
+    ticket:foundTicket,
+    msg: msgA
+
+  });
 });
 
 

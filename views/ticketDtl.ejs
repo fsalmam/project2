@@ -177,7 +177,10 @@
             <h1>Ticket Details</h1>
             <p>Type: <%= ticket.type %></p>
             <p>Subject: <%= ticket.Subject %></p>
-            <p>message: <%= ticket.message %></p>
+            <% msg.forEach(e=>{ %>
+                <p>message: <%= e %></p>
+
+           <% }) %>
 
             <form action="/ticket/<%= ticket._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Ticket</button>

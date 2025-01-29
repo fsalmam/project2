@@ -60,6 +60,22 @@
         outline: none;
       }
 
+      select {
+        padding: 10px;
+        border: 1px solid #de7474;
+        border-radius: 25px;
+        font-size: 1rem;
+        width: 100%; /* Set width to 100% to ensure input fills the container */
+        max-width: 400px; /* Max width for better presentation */
+        margin-bottom: 15px;
+        font-family: 'Arial', sans-serif; /* Temporarily use a safe font */
+      }
+
+      select:focus {
+        border-color: #2980b9;
+        outline: none;
+      }
+
       button {
         width: 30%;
         padding: 12px;
@@ -83,7 +99,7 @@
     <!-- <h1>New Ticket:</h1>
     
     <form action="/ticket/create" method="POST">
-      <!--
+      
  ebrahim0
         <label for="type">type:</label>
         <input type="text" name="type" id="type" /> -->
@@ -97,12 +113,28 @@
     <form action="/ticket/create" method="POST">
       <div>
         <label for="type">Ticket Type:</label>
-        <input type="text" name="type" id="type" required maxlength="50" placeholder="Enter type of issue" />
+        <select id="select" name="type" id="type" required maxlength="50" placeholder="Enter type of issue">
+            <option value="" disabled selected>Select Type</option>
+            <option value="Account Access Help">Account Access Help</option>
+            <option value="Card Services">Card Services</option>
+            <option value="Other">Other</option>
+        </select>
       </div>
 
       <div>
         <label for="Subject">Subject:</label>
-        <input type="text" name="Subject" id="Subject" required maxlength="100" placeholder="Enter the subject" />
+        <select name="Subject" id="Subject" required maxlength="100" placeholder="Enter the subject" >
+        
+            <option class="options" style="display: none;" value="" disabled selected>Select Subject</option>
+            <option class="options" style="display: none;"  value="Forgot Password">Forgot Password</option>
+            <option class="options" style="display: none;" value="Unlock My Account">Unlock My Account</option>
+            <option class="options" style="display: none;" value="Authentication Issues">Authentication Issues</option> 
+            <option class="optionsCard" style="display: none;" value="Report Lost or Stolen Card">Report Lost or Stolen Card</option>
+            <option class="optionsCard" style="display: none;" value="Card Activation/Deactivation">Card Activation/Deactivation</option>
+            <option class="optionsCard" style="display: none;" value="Disputed or Fraudulent Transactions">Disputed or Fraudulent Transactions</option>
+            <option class="optionsOther" style="display: none;" value="Other">Other</option>
+
+    </select>
       </div>
 
       <div>
@@ -113,40 +145,8 @@
       <button type="submit">Create Ticket</button>
     </form>
   </div>
- -->
-        <!--         <label for="type">type:</label>
-                <input type="text" name="type" id="type" /> -->
-                <label for="type">Type:</label>
-                <select id="select" name="type" id="type" required>
-                    <option value="" disabled selected>Select Type</option>
-                    <option value="Account Access Help">Account Access Help</option>
-                    <option value="Card Services">Card Services</option>
-                    <option value="Other">Other</option>
-                </select>
-        
-        <!--         <label for="Subject">Subject:</label>
-                <input type="text" name="Subject" id="Subject" /> -->
-        
-                        <label for="Subject">Subject:</label>
-                <select name="Subject" id="Subject" required>
-        
-                        <option class="options" style="display: none;" value="" disabled selected>Select Subject</option>
-                        <option class="options" style="display: none;"  value="Forgot Password">Forgot Password</option>
-                        <option class="options" style="display: none;" value="Unlock My Account">Unlock My Account</option>
-                        <option class="options" style="display: none;" value="Authentication Issues">Authentication Issues</option> 
-                        <option class="optionsCard" style="display: none;" value="Report Lost or Stolen Card">Report Lost or Stolen Card</option>
-                        <option class="optionsCard" style="display: none;" value="Card Activation/Deactivation">Card Activation/Deactivation</option>
-                        <option class="optionsCard" style="display: none;" value="Disputed or Fraudulent Transactions">Disputed or Fraudulent Transactions</option>
-                        <option class="optionsOther" style="display: none;" value="Other">Other</option>
-        
-                </select>
-        
-                <label for="message">Message:</label>
-                <textarea name="message" id="message"></textarea>
-        
-                <button type="submit">Create</button>
-              
-            </form>
+
+
         
             <script>
                 const choice = document.querySelector("#select")
