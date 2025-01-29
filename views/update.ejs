@@ -121,6 +121,22 @@
       opacity: 0.9;
     }
 
+    select {
+        padding: 10px;
+        border: 1px solid #de7474;
+        border-radius: 25px;
+        font-size: 1rem;
+        width: 100%; /* Set width to 100% to ensure input fills the container */
+        max-width: 400px; /* Max width for better presentation */
+        margin-bottom: 15px;
+        font-family: 'Arial', sans-serif; /* Temporarily use a safe font */
+      }
+
+      select:focus {
+        border-color: #2980b9;
+        outline: none;
+      }
+
     .background-animation {
       position: absolute;
       top: 0;
@@ -198,33 +214,45 @@
       <form action="/ticket/<%= ticket._id %>/update?_method=PUT" method="POST">
         <div>
           <label for="type">Type:</label>
-          <input 
-            type="text" 
-            name="type" 
-            id="type" 
-            value="<%= ticket.type %>" 
-            required 
-            maxlength="50"
-          />
+          <select id="select" name="type" id="type" required maxlength="50" >
+            <option value="" disabled selected>Select Type</option>
+            <option value="Account Access Help" <% if(ticket.type=="Account Access Help"){%>selected<% } %> >Account Access Help</option>
+            <option value="Card Services" <% if(ticket.type=="Card Services"){%>selected<% } %> >Card Services</option>
+            <option value="Other" <% if(ticket.type=="Other"){%>selected<% } %>>Other</option>
+        </select>
         </div>
 
         <div>
           <label for="subject">Subject:</label>
-          <input 
-            type="text" 
-            id="Subject" 
-            name="Subject" 
-            value="<%= ticket.Subject %>" 
-            required 
-            maxlength="100"
-          />
+          <select name="Subject" id="Subject" required maxlength="100"  >
+        
+            <option class="options" style="display: none;" value="" disabled selected>Select Subject</option>
+            <option class="options" style="display: none;"  value="Forgot Password" <% if(ticket.Subject=="Forgot Password"){%>selected<% } %>>Forgot Password</option>
+            <option class="options" style="display: none;" value="Unlock My Account" <% if(ticket.Subject=="Unlock My Account"){%>selected<% } %>>Unlock My Account</option>
+            <option class="options" style="display: none;" value="Authentication Issues" <% if(ticket.Subject=="Authentication Issues"){%>selected<% } %>>Authentication Issues</option> 
+            <option class="optionsCard" style="display: none;" value="Report Lost or Stolen Card" <% if(ticket.Subject=="Report Lost or Stolen Card"){%>selected<% } %>>Report Lost or Stolen Card</option>
+            <option class="optionsCard" style="display: none;" value="Card Activation/Deactivation" <% if(ticket.Subject=="Card Activation/Deactivation"){%>selected<% } %>>Card Activation/Deactivation</option>
+            <option class="optionsCard" style="display: none;" value="Disputed or Fraudulent Transactions" <% if(ticket.Subject=="Disputed or Fraudulent Transactions"){%>selected<% } %>>Disputed or Fraudulent Transactions</option>
+            <option class="optionsOther" style="display: none;" value="Other" <% if(ticket.Subject=="Other"){%>selected<% } %>>Other</option>
+
+    </select>
         </div>
 
         <div>
+            <label for="message">Message:</label>
+            <% msg.forEach(e=>{ %>
+                <p>message: <%= e %></p>
+
+           <% }) %>
+            <input type="text" name="message" id="message" required maxlength="300" value="Enter type of issue" />
+
+          </div>
+    
           <button type="submit">CONFIRM</button>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+
+
 
     <div class="info-section">
       <div class="info-content">
@@ -235,6 +263,31 @@
     </div>
   </div>
   <!-- test -->
+
+  <script>
+    const choice = document.querySelector("#select")
+    const options = document.querySelectorAll(".options")
+    const optionsCard = document.querySelectorAll(".optionsCard")
+    const optionsOther = document.querySelectorAll(".optionsOther")
+
+
+    
+
+    choice.addEventListener("change", (e) => {
+        options.forEach(option => option.style.display = "none");
+        optionsCard.forEach(option => option.style.display = "none");
+        optionsOther.forEach(option => option.style.display = "none");
+
+        if (e.target.value === "Account Access Help") {
+            options.forEach(option => option.style.display = "block");
+        } else if (e.target.value === "Card Services") {
+            optionsCard.forEach(option => option.style.display = "block");
+        } else if (e.target.value === "Other") {
+            optionsOther.forEach(option => option.style.display = "block");
+
+        }
+    });
+</script>
 </body>
 </html>
 

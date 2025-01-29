@@ -105,11 +105,24 @@ router.get('/:ticketId/update', async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
     const ticket=await Ticket.findById(req.params.ticketId)
+
+    const foundTicket = await Ticket.findById(req.params.ticketId).populate('message')
+    console.log(typeof(foundTicket))
+    // const msgcreator = await User.findById(foundTicket.message[0].user)
+    const msgA = await Promise.all(foundTicket.message.map( async(e)=>{
+      const msgcreator = await User.findById(e.user)
+      return  `comment: "${ e.messages}" by ${ msgcreator.username}`
+    })
+  )
    
     if (!ticket) {
       return res.redirect('/'); 
     }
-    res.render('update.ejs', { ticket: ticket });
+    res.render('update.ejs', { 
+      ticket: foundTicket,
+      msg: msgA
+
+     });
   } catch (error) {
     console.error(error);
     res.redirect('/');
@@ -120,12 +133,26 @@ router.get('/:ticketId/update', async (req, res) => {
 router.put('/:ticketId/update', async (req, res) => {
     const currentUser = await User.findById(req.session.user._id);
     console.log(req.body)
-    const ticket = await Ticket.findByIdAndUpdate(req.params.ticketId,req.body);
+    // const ticket = await Ticket.findByIdAndUpdate(req.params.ticketId,req.body);
+    const createdMessage = await Message.create({
+      messages: req.body.message,
+      user: currentUser._id
+    })
+
+    const ticket = await Ticket.findByIdAndUpdate(req.params.ticketId,{
+      type: req.body.type,
+      Subject: req.body.Subject,
+      $push:{message:createdMessage._id}
+
+    })
+    // const ticketwithmsg = await Ticket.findByIdAndUpdate(req.params.ticketId,{$push:{message:newMessage._id}})
+
+
     // if (!ticket) {
     //   return res.redirect('/'); 
     // }
 
- currentUser.set(req.body)
+//  currentUser.set(req.body)
 
     // await ticket.save();
 
