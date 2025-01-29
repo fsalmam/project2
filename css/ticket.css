@@ -1,0 +1,132 @@
+/* Title Section */
+/* Importing a new font (e.g., Montserrat) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+
+.title-container {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.title-container h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 3rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Instructions Section */
+.instructions-container {
+  text-align: center;
+  margin: 20px auto 40px;
+  color: #ffffff;
+}
+
+.instructions-container .instructions {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.instructions-container .instructions span {
+  color: #ff6363;
+  font-weight: bold;
+}
+
+/* Form Layout */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 30px; /* Increased gap between boxes */
+  padding: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Box Styling */
+.left-box, .right-box, .bottom-box {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.left-box h2, .right-box h2, .bottom-box h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Labels and Inputs Styling */
+label {
+  font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px; /* Added spacing between label and input */
+}
+
+select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px; /* Added margin between inputs */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #3c2626;
+  font-size: 1rem;
+  resize: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+  
+
+}
+
+select:hover, textarea:hover {
+  border-color: #ff6363;
+  box-shadow: 0 4px 8px rgba(255, 99, 99, 0.3);
+}
+
+select:focus, textarea:focus {
+  border-color: #ffffff;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Button Styling */
+button {
+  padding: 12px;
+  background: linear-gradient(135deg, #ff6363, #ff9e9e);
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px; /* Space between textarea and button */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh; /* Ensure the body always takes full height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background: radial-gradient(circle at 10% 20%, rgba(19, 36, 60, 1), rgba(0, 102, 102, 1) 25%, rgba(64, 224, 208, 0.5) 50%, rgba(13, 17, 23, 1) 75%);
+    background-size: 200% 200%;
+    animation: backgroundShift 10s infinite alternate;
+    position: relative;
+}

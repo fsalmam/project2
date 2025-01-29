@@ -1,0 +1,151 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: radial-gradient(circle at 10% 20%, rgb(208, 149, 153), rgb(143, 205, 205) 25%, rgba(64, 224, 208, 0.5) 50%, rgba(13, 17, 23, 1) 75%);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+
+.logo-text {
+  font-family: 'Lobster', cursive;
+  font-size: 2rem;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.navigation {
+  display: flex;
+  gap: 15px;
+}
+
+.navigation a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.navigation a:hover {
+  background: rgba(255, 99, 99, 0.3);
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 40px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin: 80px auto; /* Moves the main content further down */
+
+}
+
+.user-info {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #ff6363;
+}
+
+.tickets-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+thead {
+  background: rgba(255, 99, 99, 0.5);
+}
+
+thead th {
+  padding: 10px;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+}
+
+tbody tr {
+  transition: background 0.3s ease;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+tbody td {
+  padding: 10px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+tbody td a {
+  color: #ff6363;
+  text-decoration: none;
+}
+
+tbody td a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  padding: 15px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1rem;
+  margin-top: 20px;
+}

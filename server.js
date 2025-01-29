@@ -33,7 +33,7 @@ app.use(methodOverride("_method")); // Will change the methods for
 app.use(morgan("dev")); // Logs the requests in the terminal
 
 app.use('/images', express.static('./images'))
-
+app.use('/css',express.static('./css'))
 
 app.use(
   session({

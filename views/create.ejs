@@ -1,123 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create a Ticket</title>
-    <style>
-      body {
-        font-family: bradley hand, cursive;
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #fdfdfd, #b2cfea);
-        overflow: hidden;
-      }
-
-      .main-container {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        max-width: 1100px;
-        background: #fbfafa;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        border-radius: 20px;
-        overflow: hidden;
-        padding: 30px;
-        text-align: center;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        color: #2c3e50;
-        margin-bottom: 20px;
-      }
-
-      label {
-        font-size: 1rem;
-        color: #34495e;
-        margin-bottom: 8px;
-        display: block;
-        text-align: left;
-      }
-
-      input {
-        padding: 10px;
-        border: 1px solid #de7474;
-        border-radius: 25px;
-        font-size: 1rem;
-        width: 100%; /* Set width to 100% to ensure input fills the container */
-        max-width: 400px; /* Max width for better presentation */
-        margin-bottom: 15px;
-        font-family: 'Arial', sans-serif; /* Temporarily use a safe font */
-      }
-
-      input:focus {
-        border-color: #2980b9;
-        outline: none;
-      }
-
-      button {
-        width: 30%;
-        padding: 12px;
-        background-color: #bb3f3f;
-        color: white;
-        font-size: 1rem;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      button:hover {
-        background-color: #1e6f9f;
-      }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a Ticket</title>
+  <link rel="stylesheet" href="../../css/style.css"> <!-- Shared Styles -->
+  <link rel="stylesheet" href="../../css/ticket.css"> <!-- Ticket-Specific Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap&family=Lobster&display=swap" rel="stylesheet"> <!-- Custom Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+  
 </head>
 <body>
+  <header>
+    <div class="logo-container">
+      <img src="../../images/banklogo2.png" alt="Logo" class="logo">
+      <span class="logo-text">Bank</span>
+    </div>
+    <div class="navigation">
+      <div><i class="fas fa-hand-holding-usd"></i>Loans</div>
+      <div><i class="fas fa-piggy-bank"></i>Savings</div>
+      <div><i class="fas fa-chart-line"></i>Investments</div>
+      <div><i class="fas fa-info-circle"></i>About Us</div>
+    </div>
+  </header>
 
-    <h1>New Ticket:</h1>
-    
-    <form action="/ticket/create" method="POST">
-        <!--         <label for="type">type:</label>
-                <input type="text" name="type" id="type" /> -->
-                <label for="type">Type:</label>
-                <select id="select" name="type" id="type" required>
-                    <option value="" disabled selected>Select Type</option>
-                    <option value="Account Access Help">Account Access Help</option>
-                    <option value="Card Services">Card Services</option>
-                    <option value="Other">Other</option>
-                </select>
-        
-        <!--         <label for="Subject">Subject:</label>
-                <input type="text" name="Subject" id="Subject" /> -->
-        
-                        <label for="Subject">Subject:</label>
-                <select name="Subject" id="Subject" required>
-        
-                        <option class="options" style="display: none;" value="" disabled selected>Select Subject</option>
-                        <option class="options" style="display: none;"  value="Forgot Password">Forgot Password</option>
-                        <option class="options" style="display: none;" value="Unlock My Account">Unlock My Account</option>
-                        <option class="options" style="display: none;" value="Authentication Issues">Authentication Issues</option> 
-                        <option class="optionsCard" style="display: none;" value="Report Lost or Stolen Card">Report Lost or Stolen Card</option>
-                        <option class="optionsCard" style="display: none;" value="Card Activation/Deactivation">Card Activation/Deactivation</option>
-                        <option class="optionsCard" style="display: none;" value="Disputed or Fraudulent Transactions">Disputed or Fraudulent Transactions</option>
-                        <option class="optionsOther" style="display: none;" value="Other">Other</option>
-        
-                </select>
-        
-                <label for="message">Message:</label>
-                <textarea name="message" id="message"></textarea>
-        
-                <button type="submit">Create</button>
-              
-            </form>
-        
-            <script>
+  <!-- Title Section -->
+  <div class="title-container">
+    <h1>Let Us Know About Your Problem</h1>
+  </div>
+
+  <!-- Instructions Section -->
+  <div class="instructions-container">
+    <p class="instructions">
+      Please fill out the following fields carefully to create a <span>ticket</span>. <br >Select the appropriate type and subject, 
+      and describe your issue in detail.
+    </br>
+  </div>
+
+  <!-- Form Section -->
+  <div class="container">
+    <div class="left-box">
+      <h2>Type</h2>
+      <label for="type"><i class="fas fa-list"></i> Select Type:</label>
+      <select id="select" name="type" required>
+        <option value="" disabled selected>Select Type</option>
+        <option value="Account Access Help">Account Access Help</option>
+        <option value="Card Services">Card Services</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="right-box">
+      <h2>Subject</h2>
+      <label for="Subject"><i class="fas fa-tag"></i> Select Subject:</label>
+      <select name="Subject" id="Subject" required>
+        <option class="options" style="display: none;" value="" disabled selected>Select Subject</option>
+        <option class="options" style="display: none;" value="Forgot Password">Forgot Password</option>
+        <option class="options" style="display: none;" value="Unlock My Account">Unlock My Account</option>
+        <option class="options" style="display: none;" value="Authentication Issues">Authentication Issues</option>
+        <option class="optionsCard" style="display: none;" value="Report Lost or Stolen Card">Report Lost or Stolen Card</option>
+        <option class="optionsCard" style="display: none;" value="Card Activation/Deactivation">Card Activation/Deactivation</option>
+        <option class="optionsCard" style="display: none;" value="Disputed or Fraudulent Transactions">Disputed or Fraudulent Transactions</option>
+        <option class="optionsOther" style="display: none;" value="Other">Other</option>
+      </select>
+    </div>
+  <script>
                 const choice = document.querySelector("#select")
                 const options = document.querySelectorAll(".options")
                 const optionsCard = document.querySelectorAll(".optionsCard")
@@ -141,5 +88,14 @@
                     }
                 });
             </script>
+    <div class="bottom-box">
+      <h2>Message</h2>
+      <label for="message"><i class="fas fa-envelope"></i> Enter Message:</label>
+      <textarea name="message" id="message" placeholder="Describe your issue..."></textarea>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+    </div>
+  </div>
+  <footer>© 2025 Bank Inc. All Rights Reserved.</footer>
+  <script src="../../js/ticket.js"></script> <!-- External JavaScript -->
 </body>
 </html>

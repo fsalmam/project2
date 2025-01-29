@@ -1,0 +1,182 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 10% 20%, rgba(19, 36, 60, 1), rgba(0, 102, 102, 1) 25%, rgba(64, 224, 208, 0.5) 50%, rgba(13, 17, 23, 1) 75%);
+  background-size: 200% 200%;
+  animation: backgroundShift 10s infinite alternate;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes backgroundShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: transparent;
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  font-family: 'Lobster', cursive;
+  font-size: 2rem;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navigation div {
+  color: rgb(191, 87, 87); /* Same color as the button */
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.navigation div::after {
+  content: "•"; /* Single dot separator */
+  font-size: 1.2rem;
+  margin-left: 10px;
+  color: rgb(191, 87, 87); /* Match button color */
+}
+
+.navigation div:last-child::after {
+  content: ""; /* No separator after the last item */
+}
+
+footer {
+  width: 100%;
+  padding: 15px;
+  background: transparent;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.form-section {
+  width: 400px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: auto;
+}
+
+.form-section h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section label {
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.form-section input {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.form-section input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-section input:focus {
+  border-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.form-section button {
+  padding: 12px;
+  background: rgb(191, 87, 87);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.form-section button:hover {
+  background: rgba(255, 204, 204, 1);
+  color: rgba(255, 102, 102, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.form-section button:active {
+  background: rgba(10, 25, 47, 1);
+  transform: scale(0.98);
+}
+
+.card-image {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  max-width: 1000px;
+  z-index: 1;
+  opacity: 0.6;
+}
+

@@ -4,20 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Tickets</title>
+  <link rel="stylesheet" href="/../../css/styles.css"> <!-- Shared styles -->
+  <link rel="stylesheet" href="/../../css/user-ticket.css"> <!-- Page-specific styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet"> <!-- Fonts -->
 
-  <link rel="stylesheet" href="/styles.css"> <!-- Optional: Include a stylesheet if needed -->
-  <style>
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap&family=Lobster&display=swap" rel="stylesheet"> <!-- Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
+  <header>
+    <div class="logo-container">
+      <img src="/images/banklogo2.png" alt="Logo" class="logo">
+      <span class="logo-text">Bank</span>
+    </div>
+    <div class="navigation">
+      <div><a href="/auth/sign-out">Sign Out</a></div>
+      <div><a href="/ticket/create">Create Ticket</a></div>
+    </div>
+  </header>
 
+  <main>
+    <section class="user-info">
       <h2>User Information</h2>
       <p><strong>Username:</strong> <%= user.username %></p>
     </section>
 
-    <section class="section">
-    <section>
-
+    <section class="tickets-section">
       <h2>Tickets</h2>
       <% if (user.ticket && user.ticket.length > 0) { %>
         <table>
@@ -25,24 +37,23 @@
             <tr>
               <th>Seq</th>
               <th>Subject</th>
-
             </tr>
           </thead>
           <tbody>
             <% user.ticket.forEach((ticket, index) => { %>
               <tr>
                 <td><%= index + 1 %></td>
-                <td><a href="/ticket/<%= ticket._id %>"> <%= ticket.Subject %></a></td>
+                <td><a href="/ticket/<%= ticket._id %>"><%= ticket.Subject %></a></td>
               </tr>
             <% }) %>
           </tbody>
-
         </table>
       <% } else { %>
         <p>No tickets found for this user.</p>
       <% } %>
     </section>
-  </div>
+  </main>
 
+  <footer>© 2025 Bank Inc. All Rights Reserved.</footer>
 </body>
 </html>
